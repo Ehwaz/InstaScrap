@@ -1,0 +1,22 @@
+{% extends "ScrapPosts/main.html" %}
+
+{% block content %}
+<style>
+    #insta-login-button { position:relative; top:60px; width:280px; }
+    .centered { display: table; margin-left: auto; margin-right: auto; }
+</style>
+    {% if user and not user.is_anonymous %}
+    <li>
+       <a>Hello {{ user.get_full_name|default:user.username }}!</a>
+     </li>
+     <li>
+       <a href="{% url 'ScrapPosts:logout' %}">Logout</a>
+     </li>
+    {% else %}
+    <div id="insta-login-button" class="centered">
+        <a href="{% url 'social:begin' 'instagram' %}" class="btn btn-block btn-social btn-lg btn-instagram">
+            <span class="fa fa-instagram"></span> Sign in with Instagram
+        </a>
+    </div>
+    {% endif %}
+{% endblock %}

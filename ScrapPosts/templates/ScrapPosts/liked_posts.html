@@ -1,0 +1,83 @@
+{% extends "ScrapPosts/main.html" %}
+
+{% load staticfiles %}
+
+{% block content %}
+    <!-- Responsive Bootstrap Toolkit -->
+    <script src="{% static 'javascript/bootstrap-toolkit.js' %}"></script>
+    <!-- JavaScript Cookie Library -->
+    <script src ="{% static 'javascript/js.cookie.js' %}"></script>
+    <!-- My scripts -->
+    <script>
+        var GET_POST_URL = "{% url 'ScrapPosts:get_post' %}";
+        var LOAD_MORE_URL = "{% url 'ScrapPosts:load_more_posts' %}";
+        var CHANGE_SCRAP_URL = "{% url 'ScrapPosts:change_scrap_state' %}";
+    </script>
+    <script src ="{% static 'javascript/liked_post.js' %}"></script>
+    <!-- My scripts end -->
+
+    <div class="container">
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog modal-lg">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <a id="modal-image-a" href="" target="_blank">
+                            <img id="modal-image-img" class="img-responsive" src="" alt="">
+                        </a>
+                        <h4>
+                            <a id="modal-image-author" href="https://www.instagram.com/" target="_blank"></a>
+                        </h4>
+                        <p id="modal-image-caption"></p>
+                        <a class="btn btn-primary btn-sm" data-toggle="button" aria-pressed="false" id="modal-scrap-button" role="button"></a>
+                        <a class="btn btn-default btn-sm" id="modal-close-button" role="button">Close</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="post-container">
+            <!-- Page Header -->
+            <div class="col-lg-12 my-page-header clearfix">
+            <ul class="nav nav-pills pull-right ">
+                <li role="presentation" class="active"><a href="#">List View</a></li>
+                <li role="presentation"><a href="#">Location View</a></li>
+            </ul>
+            </div>
+            <!-- /.row -->
+
+            {% for row in liked_posts_2d %}
+                <!-- Projects Row -->
+                <div class="row">
+                    {% for post in row %}
+                        <div class="col-md-4 portfolio-item">
+                            <a class="liked-post" data-insta-post-id="{{ post.instagramPostId }}" data-toggle="modal"  href="#myModal">
+                                <img class="img-responsive" src="{{ post.imageContent.fullResUrl }}" width="300" height="300" alt="">
+                            </a>
+                        </div>
+                    {% endfor %}
+                </div>
+                <!-- /.row -->
+            {% endfor %}
+        </div>
+
+        <div class="text-center">
+        <a class="btn btn-primary btn-lg" id="likedPostLoadButton"  role="button">Load more &darr;</a>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; InstaScrap 2016</p>
+                </div>
+            </div>
+            <!-- /.row -->
+        </footer>
+
+        <hr>
+
+
+</div>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends "ScrapPosts/main.html" %}
+
+{% block content %}
+    {% if user and not user.is_anonymous %}
+        <div style="text-align:center;">
+            <p>Current access_token is: {{ access_token }}</p>
+            <form action="{% url 'ScrapPosts:set_access_token' %}" method="post">
+                {% csrf_token %}
+                    <input type="text" name="access_token" id="access_token" value="" size="80"/>
+                <input type="submit" value="submit" />
+            </form>
+        </div>
+    {% else %}
+        <div style="text-align:center;">
+            <p>Login required. (TODO: limit permission to access this page.)</p>
+        </div>
+    {% endif %}
+{% endblock%}
