@@ -13,6 +13,9 @@ from django.shortcuts import redirect
 from django.template import loader
 from django.views.decorators.csrf import csrf_protect
 
+def index(request):
+    return redirect('/scrap_posts/login/')
+
 def login(request):
     template = loader.get_template('ScrapPosts/login.html')
     context = {

@@ -4,7 +4,7 @@ from . import views
 
 app_name = 'ScrapPosts'
 urlpatterns = [
-    url(r'^$', views.login),
+    url(r'^$', views.index),
     url(r'^login/', views.login, name='login'),
     url(r'^logout/', views.logout, name='logout'),
     url(r'^crawl_posts/', views.crawl_posts, name='crawl'),

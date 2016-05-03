@@ -60,7 +60,7 @@ def createSavePost(post, scrappedUserId):
                             postedDate = timezone.make_aware(datetime.fromtimestamp(float(post['created_time'])), timezone.get_current_timezone()),
                             scrappedDate = timezone.now(),
                             postAsJson = postAsJsonObject,
-                            isScrapped = False, )
+                            isScrapped = True, )
                             #tag = (many-to-many)
         if locationObject is not None:
             postObject.location = locationObject
