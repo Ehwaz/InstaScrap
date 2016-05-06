@@ -5,7 +5,7 @@ CUR_DIR = os.path.dirname(os.path.abspath(__file__))
 
 def install_dependency():
     os.system("sudo apt-get install nginx=1.4.6-1ubuntu3.4 uwsgi=1.9.17.1-5build5")
-    os.system("pip install -r pip_dependency/deploy_env_ubuntu.txt")
+    os.system("pip install -r pip_freeze/deploy_env_ubuntu.txt")
 
 # Create django settings.py file from template and deploy info.
 def create_django_settings_file(jinja_env, deploy_info):
