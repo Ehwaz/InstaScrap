@@ -19,7 +19,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'some-key-of-yourself'
+SECRET_KEY = '{{ django_secret_key }}'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -119,8 +119,8 @@ AUTHENTICATION_BACKENDS = (
 SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/scrap_posts/liked_posts/'
 SOCIAL_AUTH_LOGIN_URL = '/scrap_posts/login'
 
-SOCIAL_AUTH_INSTAGRAM_KEY = 'some-instagram-key-of-yourself'
-SOCIAL_AUTH_INSTAGRAM_SECRET = 'some-instagram-secret-of-yourself'
+SOCIAL_AUTH_INSTAGRAM_KEY = '{{ social_auth_insta_key }}'
+SOCIAL_AUTH_INSTAGRAM_SECRET = '{{ social_auth_insta_secret }}'
 SOCIAL_AUTH_INSTAGRAM_AUTH_EXTRA_ARGUMENTS = {'scope': 'public_content'}
 
 SOCIAL_AUTH_PIPELINE = (
