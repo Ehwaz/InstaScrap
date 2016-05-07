@@ -1,0 +1,11 @@
+{
+    "uid": (your django directory's uid),
+    "gid": (your django directory's gid),
+    "nginx_socket": (nginx socket number),
+    "nginx_server_name": (deploy site's domain/IP),
+    "project_path": (project path),
+    "pyvenv_path" : (pyvenv directory path),
+    "django_secret_key": (Django secret key in settings.py),
+    "social_auth_insta_key": (Instagram API key of your-InstaScrap-app),
+    "social_auth_insta_secret": (Instagram API secret of your-InstaScrap-app)
+}
