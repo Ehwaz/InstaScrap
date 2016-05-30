@@ -143,6 +143,19 @@ def createSavePostList(postsByJson, scrappedUserId):
     postList.reverse()
     return postList
 
+# Replacing match result with html link string.
+def replaceToLink(matchObj):
+    atPattern = '<a href=\"https://www.instagram.com/%s/\">%s</a>'
+    sharpPattern = '<a href=\"https://www.instagram.com/explore/tags/%s/\">%s</a>'
+    matchedStr = matchObj.group(0)
+    if matchedStr[0] == '@':
+        return atPattern % (matchedStr[1:], matchedStr)
+    elif matchedStr[0] == '#':
+        return sharpPattern % (matchedStr[1:], matchedStr)
+    else:
+        return matchedStr + "??"    # Error case.
 
-#def addLinkToCaption(caption):
-#   TODO: replace '@..' to Instagram user link and '#..' to Instagram Tag link.
+#   Replacing '@..' to Instagram user link and '#..' to Instagram Tag link.
+def addLinkToCaption(caption):
+    regex = '(@[^\s]+|#[^\s]+)'
+    return re.sub(regex, replaceToLink, caption)

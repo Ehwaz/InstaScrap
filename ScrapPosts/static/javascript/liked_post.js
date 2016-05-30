@@ -128,7 +128,7 @@ $(document).ready(function(){
                 $('#modal-image-author').text(data["authorName"]);
                 var before = $('#modal-image-author').attr("href")
                 $('#modal-image-author').attr("href", before + data["authorName"]);
-                $('#modal-image-caption').text(data["caption"]);
+                $('#modal-image-caption').html(data["caption"]);
                 if (data["isScrapped"] == false) {
                     $('#modal-scrap-button').text("Scrap");
                     $('#modal-scrap-button').removeClass("active");

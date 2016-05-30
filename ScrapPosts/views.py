@@ -2,7 +2,7 @@ import json
 import requests
 
 from ScrapPosts.models import Post
-from ScrapPosts.utils.handlePost import createSavePost
+from ScrapPosts.utils.handlePost import createSavePost, addLinkToCaption
 from ScrapPosts.utils.menuList import MenuList
 
 from django.contrib.auth import logout as auth_logout
@@ -155,7 +155,7 @@ def get_post(request):
 
             returnJson['result'] = "Success"
             returnJson['authorName'] = post.authorName
-            returnJson['caption'] = post.caption
+            returnJson['caption'] = addLinkToCaption(post.caption)
             returnJson['instagramPostId'] = postId
             returnJson['instagramLink'] = post.instagramLink
             returnJson['fullResUrl'] = post.imageContent.fullResUrl
